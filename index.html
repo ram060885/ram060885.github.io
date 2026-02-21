@@ -175,15 +175,37 @@ cursor:pointer;
 /* CHATBOT */
 .chatbot{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:100px;   /* moved up so it doesn't overlap */
+right:25px;
 width:280px;
 background:#111827;
 border-radius:15px;
 display:none;
 flex-direction:column;
+z-index:2500;
 }
 
+.chat-toggle{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#ff2d95;
+color:white;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+font-size:22px;
+cursor:pointer;
+z-index:3000;
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.chat-toggle:hover{
+transform:scale(1.1);
+}
+  
 .chat-header{
 background:#ff2d95;
 padding:10px;
@@ -309,8 +331,8 @@ ERP, API systems and AI-driven workflows.
 </div>
 </div>
 
-<button onclick="toggleChat()" style="position:fixed;bottom:20px;right:20px;background:#ff2d95;color:white;padding:10px;border:none;border-radius:50%;">💬</button>
-
+/*<button onclick="toggleChat()" style="position:fixed;bottom:20px;right:20px;background:#ff2d95;color:white;padding:10px;border:none;border-radius:50%;">💬</button>*/
+<button class="chat-toggle" onclick="toggleChat()">💬</button>
 <script>
 
 /* Scroll Animation */
