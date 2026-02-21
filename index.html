@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RH Process | Ram Halder</title>
+<title>RH Process Intelligence & Automation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -14,28 +13,21 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:#0f172a;
 color:white;
-transition:0.4s;
 overflow-x:hidden;
+background:linear-gradient(-45deg,#0f172a,#1e1b4b,#0f172a,#312e81);
+background-size:400% 400%;
+animation:gradientBG 12s ease infinite;
 }
 
-body.light{
-background:#f3f4f6;
-color:#111827;
-}
-
-/* FIX: Particles Behind Everything */
-#particles-js{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;   /* 🔥 IMPORTANT FIX */
+@keyframes gradientBG{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
 /* NAVBAR */
@@ -43,11 +35,11 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 8%;
+padding:20px 8%;
 position:fixed;
 width:100%;
 z-index:1000;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.4);
 backdrop-filter:blur(10px);
 }
 
@@ -62,22 +54,14 @@ height:45px;
 }
 
 nav ul{
-list-style:none;
 display:flex;
+list-style:none;
 gap:25px;
 }
 
 nav a{
-text-decoration:none;
 color:white;
-font-weight:500;
-}
-
-.toggle-btn{
-cursor:pointer;
-padding:6px 14px;
-background:#f97316;
-border-radius:20px;
+text-decoration:none;
 }
 
 /* HERO */
@@ -93,32 +77,44 @@ padding:20px;
 
 .hero h1{
 font-size:55px;
+font-weight:800;
+line-height:1.2;
 }
 
-.typing{
-color:#f97316;
-font-size:35px;
-margin-top:10px;
-height:40px;
+.highlight{
+color:#ff2d95;
 }
 
 .btn{
-margin-top:25px;
-padding:14px 35px;
-background:#f97316;
-border-radius:30px;
-text-decoration:none;
+margin-top:30px;
+padding:14px 40px;
+background:#ff2d95;
+border-radius:40px;
 color:white;
+text-decoration:none;
+font-weight:600;
 }
 
 /* SECTIONS */
 .section{
 padding:100px 10%;
 text-align:center;
-position:relative;
-z-index:1;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
 }
 
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.section h2{
+font-size:40px;
+margin-bottom:40px;
+}
+
+/* CARDS */
 .card-container{
 display:flex;
 flex-wrap:wrap;
@@ -127,19 +123,32 @@ gap:30px;
 }
 
 .card{
-background:#1e293b;
+background:rgba(255,255,255,0.05);
 padding:30px;
-width:280px;
-border-radius:15px;
-transition:0.3s;
+width:300px;
+border-radius:20px;
+transition:0.4s;
+text-align:left;
 }
 
 .card:hover{
 transform:translateY(-10px);
-background:#334155;
+background:rgba(255,255,255,0.1);
 }
 
-/* CONTACT FORM */
+.card h3{
+color:#ff2d95;
+margin-bottom:15px;
+}
+
+/* COUNTER */
+.counter{
+font-size:60px;
+font-weight:800;
+color:#ff2d95;
+}
+
+/* CONTACT */
 form{
 max-width:500px;
 margin:auto;
@@ -150,17 +159,16 @@ gap:15px;
 
 input,textarea{
 padding:12px;
-border-radius:8px;
+border-radius:10px;
 border:none;
-outline:none;
 }
 
 button{
 padding:12px;
-background:#f97316;
-color:white;
+background:#ff2d95;
 border:none;
-border-radius:8px;
+border-radius:10px;
+color:white;
 cursor:pointer;
 }
 
@@ -169,24 +177,24 @@ cursor:pointer;
 position:fixed;
 bottom:20px;
 right:20px;
-width:300px;
-background:#1e293b;
-border-radius:10px;
+width:280px;
+background:#111827;
+border-radius:15px;
 display:none;
 flex-direction:column;
-z-index:2000;
 }
 
 .chat-header{
-background:#f97316;
+background:#ff2d95;
 padding:10px;
 cursor:pointer;
 }
 
 .chat-body{
 padding:10px;
-height:250px;
+height:200px;
 overflow-y:auto;
+font-size:14px;
 }
 
 .chat-input{
@@ -200,7 +208,7 @@ padding:8px;
 }
 
 .chat-input button{
-background:#f97316;
+background:#ff2d95;
 border:none;
 padding:8px;
 color:white;
@@ -210,8 +218,6 @@ color:white;
 
 <body>
 
-<div id="particles-js"></div>
-
 <nav>
 <div class="logo-container">
 <img src="logo.png">
@@ -220,34 +226,70 @@ color:white;
 
 <ul>
 <li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
+<li><a href="#automation">Automation</a></li>
 <li><a href="#contact">Contact</a></li>
-<li><span class="toggle-btn" onclick="toggleMode()">Toggle</span></li>
 </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-<h1>Ram Halder</h1>
-<div class="typing" id="typing"></div>
-<a href="#contact" class="btn">Let's Work Together</a>
+<h1>
+Your Strategic Partner for <br>
+<span class="highlight">Finance, HR & Payroll</span><br>
+Outsourcing & Automation
+</h1>
+<a href="#contact" class="btn">Start Automation Journey</a>
 </section>
 
-<section id="about" class="section">
-<h2>About Me</h2>
-<p>I build AI Agents, VBA Automation & Enterprise Process Solutions.</p>
+<!-- COUNTER -->
+<section class="section">
+<h2>Automation Impact</h2>
+<div class="counter" id="counter">0</div>
+<p>Automation Tools Delivered</p>
 </section>
 
-<section id="services" class="section">
-<h2>Services</h2>
+<!-- AUTOMATION -->
+<section id="automation" class="section">
+<h2>Key Automation Solutions</h2>
+
 <div class="card-container">
-<div class="card">Excel & VBA Automation</div>
-<div class="card">AI Agent Development</div>
-<div class="card">Process Optimization</div>
+
+<div class="card">
+<h3>AP Process</h3>
+<p>Excel to ERP • API Integrations • Invoice Automation</p>
+</div>
+
+<div class="card">
+<h3>Reconciliations</h3>
+<p>Vendor • Bank • GST • Ledger Matching</p>
+</div>
+
+<div class="card">
+<h3>Outlook Automation</h3>
+<p>Attachment Download • Email Tracking • AI Replies</p>
+</div>
+
+<div class="card">
+<h3>Dashboards</h3>
+<p>Financial • HR • Payroll • KPI Analytics</p>
+</div>
+
 </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="section">
+<h2>Founder – Ram Halder</h2>
+<p>
+Ram Halder is the Founder of RH Process Intelligence & Automation.
+He has developed 1000+ enterprise automation tools integrating Excel,
+ERP, API systems and AI-driven workflows.
+</p>
+</section>
+
+<!-- CONTACT -->
 <section id="contact" class="section">
-<h2>Contact Me</h2>
+<h2>Contact</h2>
 
 <form action="https://formsubmit.co/rk.10.halder@gmail.com" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
@@ -267,38 +309,32 @@ color:white;
 </div>
 </div>
 
-<button onclick="toggleChat()" style="position:fixed;bottom:20px;right:20px;background:#f97316;color:white;padding:10px;border:none;border-radius:50%;z-index:2000;">💬</button>
+<button onclick="toggleChat()" style="position:fixed;bottom:20px;right:20px;background:#ff2d95;color:white;padding:10px;border:none;border-radius:50%;">💬</button>
 
 <script>
 
-/* Typing Effect */
-const textArray = ["Automation Architect","AI Agent Builder","Process Intelligence Expert"];
-let i=0,j=0,currentText="",isDeleting=false;
-function type(){
-if(i<textArray.length){
-if(!isDeleting && j<=textArray[i].length){
-currentText=textArray[i].substring(0,j++);
+/* Scroll Animation */
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+const top=sec.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+sec.classList.add('show');
 }
-if(isDeleting && j>=0){
-currentText=textArray[i].substring(0,j--);
-}
-document.getElementById("typing").innerHTML=currentText;
-if(j==textArray[i].length){isDeleting=true;setTimeout(type,1000);return;}
-if(j==0){isDeleting=false;i++;if(i==textArray.length)i=0;}
-}
-setTimeout(type,100);
-}
-type();
-
-/* Dark Light Toggle */
-function toggleMode(){
-document.body.classList.toggle("light");
-}
-
-/* Particles */
-particlesJS("particles-js",{
-particles:{number:{value:60},size:{value:3},move:{speed:2}},
 });
+});
+
+/* Counter Animation */
+let count=0;
+let target=1000;
+let counter=document.getElementById("counter");
+let interval=setInterval(()=>{
+count+=10;
+counter.innerText=count+"+";
+if(count>=target){
+clearInterval(interval);
+}
+},30);
 
 /* Chatbot */
 function toggleChat(){
@@ -310,8 +346,8 @@ bot.style.flexDirection="column";
 function sendMessage(){
 let input=document.getElementById("userInput").value;
 let chat=document.getElementById("chat-body");
-chat.innerHTML+="<div>You: "+input+"</div>";
-chat.innerHTML+="<div>AI: Thank you for contacting RH Process. We will connect soon.</div>";
+chat.innerHTML+="<div><b>You:</b> "+input+"</div>";
+chat.innerHTML+="<div><b>AI:</b> Thank you for contacting RH Process. Our automation team will connect with you shortly.</div>";
 document.getElementById("userInput").value="";
 }
 </script>
