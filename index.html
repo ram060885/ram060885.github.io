@@ -1,3 +1,4 @@
+please change into my below codes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RH Process | Ram Halder</title>
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Particles.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 <style>
@@ -26,16 +30,6 @@ overflow-x:hidden;
 body.light{
 background:#f3f4f6;
 color:#111827;
-}
-
-/* FIX: Particles Behind Everything */
-#particles-js{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;   /* 🔥 IMPORTANT FIX */
 }
 
 /* NAVBAR */
@@ -89,6 +83,8 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
+position:relative;
+z-index:1;
 }
 
 .hero h1{
@@ -115,8 +111,6 @@ color:white;
 .section{
 padding:100px 10%;
 text-align:center;
-position:relative;
-z-index:1;
 }
 
 .card-container{
@@ -152,7 +146,6 @@ input,textarea{
 padding:12px;
 border-radius:8px;
 border:none;
-outline:none;
 }
 
 button{
@@ -174,7 +167,6 @@ background:#1e293b;
 border-radius:10px;
 display:none;
 flex-direction:column;
-z-index:2000;
 }
 
 .chat-header{
@@ -204,6 +196,13 @@ background:#f97316;
 border:none;
 padding:8px;
 color:white;
+}
+
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+z-index:0;
 }
 </style>
 </head>
@@ -267,7 +266,7 @@ color:white;
 </div>
 </div>
 
-<button onclick="toggleChat()" style="position:fixed;bottom:20px;right:20px;background:#f97316;color:white;padding:10px;border:none;border-radius:50%;z-index:2000;">💬</button>
+<button onclick="toggleChat()" style="position:fixed;bottom:20px;right:20px;background:#f97316;color:white;padding:10px;border:none;border-radius:50%;">💬</button>
 
 <script>
 
