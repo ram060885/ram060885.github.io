@@ -17,11 +17,11 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(-45deg,#0f172a,#1e293b,#111827,#0f172a);
+background:linear-gradient(-45deg,#0f0c29,#1a1f71,#ff0080,#1a1f71);
 background-size:400% 400%;
-animation:gradient 12s ease infinite;
-color:white;
-transition:0.4s;
+animation:gradient 15s ease infinite;
+color:#e0f7ff;
+overflow-x:hidden;
 }
 
 @keyframes gradient{
@@ -29,6 +29,22 @@ transition:0.4s;
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
 }
+
+/* Pink Glow Shapes */
+body::before,
+body::after{
+content:"";
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,#ff0080,transparent);
+border-radius:50%;
+filter:blur(120px);
+z-index:-1;
+}
+
+body::before{top:10%;left:5%;}
+body::after{bottom:10%;right:5%;}
 
 /* NAV */
 nav{
@@ -38,8 +54,8 @@ align-items:center;
 padding:15px 8%;
 position:fixed;
 width:100%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(8px);
+background:rgba(0,0,50,0.7);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
@@ -50,20 +66,23 @@ gap:25px;
 }
 
 nav a{
-color:white;
+color:#ff4da6;
 text-decoration:none;
-font-weight:500;
+font-weight:600;
 transition:0.3s;
 }
 
-nav a:hover{color:#f97316;}
+nav a:hover{
+color:#00c3ff;
+}
 
 .toggle-mode{
 cursor:pointer;
-background:#f97316;
+background:#ff0080;
 padding:6px 15px;
 border-radius:20px;
 font-size:14px;
+color:white;
 }
 
 /* HERO */
@@ -79,19 +98,22 @@ padding:20px;
 
 .hero h1{
 font-size:55px;
+background:linear-gradient(90deg,#ff0080,#00c3ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 margin-bottom:10px;
 }
 
 .typing{
 font-size:28px;
-color:#f97316;
+color:#00c3ff;
 height:35px;
 margin-bottom:20px;
 }
 
 .btn{
 padding:12px 28px;
-background:#f97316;
+background:#ff0080;
 border:none;
 border-radius:30px;
 color:white;
@@ -100,11 +122,12 @@ margin:6px;
 transition:0.3s;
 display:inline-block;
 cursor:pointer;
+box-shadow:0 0 15px #ff0080;
 }
 
 .btn:hover{
-background:#ea580c;
-transform:scale(1.05);
+background:#00c3ff;
+box-shadow:0 0 20px #00c3ff;
 }
 
 /* SECTION */
@@ -116,6 +139,7 @@ text-align:center;
 .section h2{
 margin-bottom:40px;
 font-size:32px;
+color:#ff4da6;
 }
 
 /* GRID */
@@ -126,16 +150,16 @@ gap:25px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
+background:rgba(0,0,80,0.6);
 padding:30px;
 border-radius:15px;
 transition:0.4s;
-backdrop-filter:blur(10px);
+border:1px solid #ff0080;
 }
 
 .card:hover{
 transform:translateY(-8px);
-background:rgba(255,255,255,0.1);
+border:1px solid #00c3ff;
 }
 
 /* TIMELINE */
@@ -148,12 +172,12 @@ text-align:left;
 .timeline div{
 margin-bottom:30px;
 padding-left:20px;
-border-left:3px solid #f97316;
+border-left:3px solid #ff0080;
 }
 
 /* CONTACT */
 .contact a{
-color:#f97316;
+color:#00c3ff;
 text-decoration:none;
 }
 
@@ -170,9 +194,10 @@ gap:15px;
 .contact-form textarea{
 padding:12px;
 border-radius:8px;
-border:none;
+border:1px solid #ff0080;
+background:#0f0c29;
+color:white;
 outline:none;
-font-size:14px;
 }
 
 .contact-form textarea{
@@ -183,17 +208,9 @@ resize:none;
 footer{
 text-align:center;
 padding:25px;
-background:#000;
+background:#0f0c29;
+color:#ff4da6;
 }
-
-/* LIGHT MODE */
-.light{
-background:white;
-color:black;
-}
-.light nav{background:rgba(255,255,255,0.8);}
-.light .card{background:rgba(0,0,0,0.05);}
-.light footer{background:#eee;color:black;}
 
 @media(max-width:768px){
 .hero h1{font-size:38px;}
@@ -205,7 +222,7 @@ color:black;
 <body>
 
 <nav>
-<div><strong>RH Process Intelligence</strong></div>
+<div style="color:#00c3ff;"><strong>RH Process Intelligence</strong></div>
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
@@ -213,13 +230,12 @@ color:black;
 <li><a href="#experience">Experience</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
-<div class="toggle-mode" onclick="toggleMode()">Light/Dark</div>
 </nav>
 
 <section class="hero">
 <h1>Ram Halder</h1>
 <div class="typing" id="typing"></div>
-<p>18+ Years Finance Leadership | 10+ Years Intelligent Automation & AI Systems</p>
+<p style="color:#e0f7ff;">18+ Years Finance Leadership | 10+ Years Intelligent Automation & AI Systems</p>
 <a href="#contact" class="btn">Hire Me</a>
 <a href="resume.pdf" download class="btn">Download Resume</a>
 </section>
@@ -235,19 +251,19 @@ AI agents, ERP integrations, Power Automate systems and enterprise workflow inte
 <section id="services" class="section">
 <h2>Core Services</h2>
 <div class="grid">
-<div class="card"><h3>Enterprise VBA Systems</h3><p>Advanced macro engines & reconciliation tools.</p></div>
-<div class="card"><h3>AI Automation</h3><p>Intelligent business process automation agents.</p></div>
-<div class="card"><h3>ERP & SAP Integration</h3><p>Seamless finance workflow optimization.</p></div>
-<div class="card"><h3>RPA & Power Automate</h3><p>Scalable enterprise automation frameworks.</p></div>
+<div class="card"><h3 style="color:#00c3ff;">Enterprise VBA Systems</h3><p>Advanced macro engines & reconciliation tools.</p></div>
+<div class="card"><h3 style="color:#00c3ff;">AI Automation</h3><p>Intelligent business process automation agents.</p></div>
+<div class="card"><h3 style="color:#00c3ff;">ERP & SAP Integration</h3><p>Seamless finance workflow optimization.</p></div>
+<div class="card"><h3 style="color:#00c3ff;">RPA & Power Automate</h3><p>Scalable enterprise automation frameworks.</p></div>
 </div>
 </section>
 
 <section id="projects" class="section">
 <h2>Key Projects</h2>
 <div class="grid">
-<div class="card"><h3>GST Reconciliation Engine</h3><p>Automated multi-client GST matching & reporting system.</p></div>
-<div class="card"><h3>Vendor SOA Automation</h3><p>Smart reconciliation with pivot intelligence.</p></div>
-<div class="card"><h3>AI Finance Bot</h3><p>Automated reporting & financial insights assistant.</p></div>
+<div class="card"><h3 style="color:#00c3ff;">GST Reconciliation Engine</h3><p>Automated multi-client GST matching & reporting system.</p></div>
+<div class="card"><h3 style="color:#00c3ff;">Vendor SOA Automation</h3><p>Smart reconciliation with pivot intelligence.</p></div>
+<div class="card"><h3 style="color:#00c3ff;">AI Finance Bot</h3><p>Automated reporting & financial insights assistant.</p></div>
 </div>
 </section>
 
@@ -255,11 +271,11 @@ AI agents, ERP integrations, Power Automate systems and enterprise workflow inte
 <h2>Professional Experience</h2>
 <div class="timeline">
 <div>
-<h3>18+ Years – Finance & Accounts</h3>
+<h3 style="color:#00c3ff;">18+ Years – Finance & Accounts</h3>
 <p>Financial reporting, compliance, ERP operations & enterprise controls.</p>
 </div>
 <div>
-<h3>10+ Years – Automation Specialist</h3>
+<h3 style="color:#00c3ff;">10+ Years – Automation Specialist</h3>
 <p>VBA systems, AI agents, workflow intelligence & process re-engineering.</p>
 </div>
 </div>
@@ -267,12 +283,10 @@ AI agents, ERP integrations, Power Automate systems and enterprise workflow inte
 
 <section id="contact" class="section contact">
 <h2>Contact</h2>
-
 <p><strong>Mobile:</strong> <a href="tel:+919818714744">+91 9818714744</a></p>
 <p><strong>Email:</strong> <a href="mailto:rk.10.halder@gmail.com">rk.10.halder@gmail.com</a></p>
 
 <form action="https://formsubmit.co/rk.10.halder@gmail.com" method="POST" class="contact-form">
-
 <input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Your Email" required>
 
@@ -289,7 +303,6 @@ AI agents, ERP integrations, Power Automate systems and enterprise workflow inte
 <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
 
 <button type="submit" class="btn">Send Message</button>
-
 </form>
 </section>
 
@@ -310,10 +323,6 @@ setTimeout(()=>{index=0;count++;},1500);
 }
 setTimeout(type,100);
 })();
-
-function toggleMode(){
-document.body.classList.toggle("light");
-}
 </script>
 
 </body>
