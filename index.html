@@ -3,54 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RH Process Intelligence & Automation</title>
+<title>RH Process | Ram Halder</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-color:white;
-overflow-x:hidden;
-background:linear-gradient(-45deg,#0f172a,#1e1b4b,#0f172a,#312e81);
+background:linear-gradient(-45deg,#0f172a,#1e293b,#111827,#0f172a);
 background-size:400% 400%;
-animation:gradientBG 12s ease infinite;
+animation:gradient 12s ease infinite;
+color:white;
+transition:0.4s;
 }
 
-@keyframes gradientBG{
+@keyframes gradient{
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 8%;
+padding:15px 8%;
 position:fixed;
 width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(8px);
 z-index:1000;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
-}
-
-.logo-container{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.logo-container img{
-height:45px;
 }
 
 nav ul{
@@ -62,6 +52,18 @@ gap:25px;
 nav a{
 color:white;
 text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{color:#f97316;}
+
+.toggle-mode{
+cursor:pointer;
+background:#f97316;
+padding:6px 15px;
+border-radius:20px;
+font-size:14px;
 }
 
 /* HERO */
@@ -77,163 +79,101 @@ padding:20px;
 
 .hero h1{
 font-size:55px;
-font-weight:800;
-line-height:1.2;
+margin-bottom:10px;
 }
 
-.highlight{
-color:#ff2d95;
+.typing{
+font-size:28px;
+color:#f97316;
+height:35px;
+margin-bottom:20px;
 }
 
 .btn{
-margin-top:30px;
-padding:14px 40px;
-background:#ff2d95;
-border-radius:40px;
+padding:12px 28px;
+background:#f97316;
+border:none;
+border-radius:30px;
 color:white;
 text-decoration:none;
-font-weight:600;
+margin:6px;
+transition:0.3s;
+display:inline-block;
 }
 
-/* SECTIONS */
+.btn:hover{
+background:#ea580c;
+transform:scale(1.05);
+}
+
+/* SECTION */
 .section{
 padding:100px 10%;
 text-align:center;
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.section.show{
-opacity:1;
-transform:translateY(0);
 }
 
 .section h2{
-font-size:40px;
 margin-bottom:40px;
+font-size:32px;
 }
 
 /* CARDS */
-.card-container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
 .card{
 background:rgba(255,255,255,0.05);
 padding:30px;
-width:300px;
-border-radius:20px;
+border-radius:15px;
 transition:0.4s;
-text-align:left;
+backdrop-filter:blur(10px);
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-8px);
 background:rgba(255,255,255,0.1);
 }
 
-.card h3{
-color:#ff2d95;
-margin-bottom:15px;
+/* TIMELINE */
+.timeline{
+max-width:800px;
+margin:auto;
+text-align:left;
 }
 
-/* COUNTER */
-.counter{
-font-size:60px;
-font-weight:800;
-color:#ff2d95;
+.timeline div{
+margin-bottom:30px;
+padding-left:20px;
+border-left:3px solid #f97316;
 }
 
 /* CONTACT */
-form{
-max-width:500px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:15px;
+.contact a{
+color:#f97316;
+text-decoration:none;
 }
 
-input,textarea{
-padding:12px;
-border-radius:10px;
-border:none;
+footer{
+text-align:center;
+padding:25px;
+background:#000;
 }
 
-button{
-padding:12px;
-background:#ff2d95;
-border:none;
-border-radius:10px;
-color:white;
-cursor:pointer;
+/* LIGHT MODE */
+.light{
+background:white;
+color:black;
 }
+.light nav{background:rgba(255,255,255,0.8);}
+.light .card{background:rgba(0,0,0,0.05);}
+.light footer{background:#eee;color:black;}
 
-/* CHATBOT */
-.chatbot{
-position:fixed;
-bottom:100px;   /* moved up so it doesn't overlap */
-right:25px;
-width:280px;
-background:#111827;
-border-radius:15px;
-display:none;
-flex-direction:column;
-z-index:2500;
-}
-
-.chat-toggle{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#ff2d95;
-color:white;
-width:60px;
-height:60px;
-border:none;
-border-radius:50%;
-font-size:22px;
-cursor:pointer;
-z-index:3000;
-box-shadow:0 5px 15px rgba(0,0,0,0.4);
-transition:0.3s;
-}
-
-.chat-toggle:hover{
-transform:scale(1.1);
-}
-  
-.chat-header{
-background:#ff2d95;
-padding:10px;
-cursor:pointer;
-}
-
-.chat-body{
-padding:10px;
-height:200px;
-overflow-y:auto;
-font-size:14px;
-}
-
-.chat-input{
-display:flex;
-}
-
-.chat-input input{
-flex:1;
-border:none;
-padding:8px;
-}
-
-.chat-input button{
-background:#ff2d95;
-border:none;
-padding:8px;
-color:white;
+@media(max-width:768px){
+.hero h1{font-size:38px;}
+.typing{font-size:20px;}
 }
 </style>
 </head>
@@ -241,136 +181,94 @@ color:white;
 <body>
 
 <nav>
-<div class="logo-container">
-<img src="logo.png">
-<strong>RH Process</strong>
-</div>
-
+<div><strong>RH Process Intelligence</strong></div>
 <ul>
 <li><a href="#about">About</a></li>
-<li><a href="#automation">Automation</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#experience">Experience</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
+<div class="toggle-mode" onclick="toggleMode()">Light/Dark</div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-<h1>
-Your Strategic Partner for <br>
-<span class="highlight">Finance, HR & Payroll</span><br>
-Outsourcing & Automation
-</h1>
-<a href="#contact" class="btn">Start Automation Journey</a>
+<h1>Ram Halder</h1>
+<div class="typing" id="typing"></div>
+<p>18+ Years Finance Leadership | 10+ Years Intelligent Automation & AI Systems</p>
+<a href="#contact" class="btn">Hire Me</a>
+<a href="resume.pdf" download class="btn">Download Resume</a>
 </section>
 
-<!-- COUNTER -->
-<section class="section">
-<h2>Automation Impact</h2>
-<div class="counter" id="counter">0</div>
-<p>Automation Tools Delivered</p>
-</section>
-
-<!-- AUTOMATION -->
-<section id="automation" class="section">
-<h2>Key Automation Solutions</h2>
-
-<div class="card-container">
-
-<div class="card">
-<h3>AP Process</h3>
-<p>Excel to ERP • API Integrations • Invoice Automation</p>
-</div>
-
-<div class="card">
-<h3>Reconciliations</h3>
-<p>Vendor • Bank • GST • Ledger Matching</p>
-</div>
-
-<div class="card">
-<h3>Outlook Automation</h3>
-<p>Attachment Download • Email Tracking • AI Replies</p>
-</div>
-
-<div class="card">
-<h3>Dashboards</h3>
-<p>Financial • HR • Payroll • KPI Analytics</p>
-</div>
-
-</div>
-</section>
-
-<!-- ABOUT -->
 <section id="about" class="section">
-<h2>Founder – Ram Halder</h2>
+<h2>About Me</h2>
 <p>
-Ram Halder is the Founder of RH Process Intelligence & Automation.
-He has developed 1000+ enterprise automation tools integrating Excel,
-ERP, API systems and AI-driven workflows.
+Enterprise Finance & Automation Architect delivering high-performance reconciliation engines,
+AI agents, ERP integrations, Power Automate systems and enterprise workflow intelligence.
 </p>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-<h2>Contact</h2>
-
-<form action="https://formsubmit.co/rk.10.halder@gmail.com" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" rows="5" placeholder="Your Message"></textarea>
-<button type="submit">Send Message</button>
-</form>
+<section id="services" class="section">
+<h2>Core Services</h2>
+<div class="grid">
+<div class="card"><h3>Enterprise VBA Systems</h3><p>Advanced macro engines & reconciliation tools.</p></div>
+<div class="card"><h3>AI Automation</h3><p>Intelligent business process automation agents.</p></div>
+<div class="card"><h3>ERP & SAP Integration</h3><p>Seamless finance workflow optimization.</p></div>
+<div class="card"><h3>RPA & Power Automate</h3><p>Scalable enterprise automation frameworks.</p></div>
+</div>
 </section>
 
-<!-- CHATBOT -->
-<div class="chatbot" id="chatbot">
-<div class="chat-header" onclick="toggleChat()">AI Assistant</div>
-<div class="chat-body" id="chat-body"></div>
-<div class="chat-input">
-<input type="text" id="userInput" placeholder="Ask something...">
-<button onclick="sendMessage()">Send</button>
+<section id="projects" class="section">
+<h2>Key Projects</h2>
+<div class="grid">
+<div class="card"><h3>GST Reconciliation Engine</h3><p>Automated multi-client GST matching & reporting system.</p></div>
+<div class="card"><h3>Vendor SOA Automation</h3><p>Smart reconciliation with pivot intelligence.</p></div>
+<div class="card"><h3>AI Finance Bot</h3><p>Automated reporting & financial insights assistant.</p></div>
+</div>
+</section>
+
+<section id="experience" class="section">
+<h2>Professional Experience</h2>
+<div class="timeline">
+<div>
+<h3>18+ Years – Finance & Accounts</h3>
+<p>Financial reporting, compliance, ERP operations & enterprise controls.</p>
+</div>
+<div>
+<h3>10+ Years – Automation Specialist</h3>
+<p>VBA systems, AI agents, workflow intelligence & process re-engineering.</p>
 </div>
 </div>
+</section>
 
+<section id="contact" class="section contact">
+<h2>Contact</h2>
+<p><strong>Mobile:</strong> <a href="tel:+919818714744">+91 9818714744</a></p>
+<p><strong>Email:</strong> <a href="mailto:rk.10.halder@gmail.com">rk.10.halder@gmail.com</a></p>
+</section>
 
-<button class="chat-toggle" onclick="toggleChat()">💬</button>
+<footer>
+© 2026 Ram Halder | RH Process Intelligence & Enterprise Automation
+</footer>
+
 <script>
-
-/* Scroll Animation */
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-sections.forEach(sec=>{
-const top=sec.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-sec.classList.add('show');
+/* Typing Animation */
+const texts=["Automation Architect","Finance Transformation Leader","AI & Workflow Intelligence Expert"];
+let count=0,index=0,currentText='',letter='';
+(function type(){
+if(count===texts.length){count=0;}
+currentText=texts[count];
+letter=currentText.slice(0,++index);
+document.getElementById('typing').textContent=letter;
+if(letter.length===currentText.length){
+setTimeout(()=>{index=0;count++;},1500);
 }
-});
-});
+setTimeout(type,100);
+})();
 
-/* Counter Animation */
-let count=0;
-let target=1000;
-let counter=document.getElementById("counter");
-let interval=setInterval(()=>{
-count+=10;
-counter.innerText=count+"+";
-if(count>=target){
-clearInterval(interval);
-}
-},30);
-
-/* Chatbot */
-function toggleChat(){
-const bot=document.getElementById("chatbot");
-bot.style.display=bot.style.display==="flex"?"none":"flex";
-bot.style.flexDirection="column";
-}
-
-function sendMessage(){
-let input=document.getElementById("userInput").value;
-let chat=document.getElementById("chat-body");
-chat.innerHTML+="<div><b>You:</b> "+input+"</div>";
-chat.innerHTML+="<div><b>AI:</b> Thank you for contacting RH Process. Our automation team will connect with you shortly.</div>";
-document.getElementById("userInput").value="";
+/* Light Dark Toggle */
+function toggleMode(){
+document.body.classList.toggle("light");
 }
 </script>
 
